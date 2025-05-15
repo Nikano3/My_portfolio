@@ -12,8 +12,8 @@ class Registration(BaseModel):
     def password_strength(cls, v):
         if len(v) < 6:
             raise PydanticCustomError(
-                "password_too_short",  # код ошибки (любой, ты сам выбираешь)
-                "Пароль должен быть не менее 6 символов"  # сообщение пользователю
+                "password_too_short",  
+                "Пароль должен быть не менее 6 символов" 
             )
         return v
 
