@@ -1,0 +1,90 @@
+body{
+    align-items: center;
+    background: linear-gradient(135deg, #eb92be, #7893ff, #63c9);
+    display: flex;
+    height: 100vh; 
+    margin: 0;
+}
+.block{
+    margin:auto;
+    box-sizing: border-box;
+    margin-top: 150px;
+    width: 450px;
+    height: 450px;
+    background-color: rgba(240, 240, 240, 0.30);
+    border-radius: 25px;
+
+}
+.cont_button{
+    margin-left: 45px;
+    margin-top:20px;
+    border: none;
+    border-radius:10px;
+    font-size: 18px;
+    padding: 12px 24px;
+    background-color: rgba(0, 191, 255, 0.3);
+}
+.cont_button:hover{
+    background-color: #00b0eb;
+    cursor: pointer;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+    margin-top: 50px;
+    margin-right: 25px
+}
+
+.hidden {
+    display: none;
+}
+input {
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 16px;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: rgba(162, 210, 255, 0.6); /* Прозрачный голубой — из твоей палитры */
+    box-shadow: 0 4px 20px rgba(120, 147, 255, 0.25);
+    color: rgba(71, 69, 69, 0.9);
+
+}
+    
+.form-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 70px;
+    background-color: rgba(120, 180, 255, 0.9);
+    border-radius: 10px;
+    border-color: transparent;
+    color: rgba(71, 69, 69, 0.9);
+}
+input:hover{
+    background-color: rgba(145, 195, 240, 0.6);
+
+}
+input:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(120, 147, 255, 0.5); /* мягкая светящаяся рамка */
+}
+.form-submit:hover{
+    background-color: rgba(100, 160, 240, 0.7);
+
+}

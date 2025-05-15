@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/main.css">
+    <meta charset="UTF-8">
+    <script src="/js/form.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+<div class="block">
+    <button class="cont_button" onclick="showForm('register')">
+        Регистрация
+    </button>
+    <button class="cont_button" onclick="showForm('login')">
+        Авторизация
+    </button>
+
+    <form id="register-form" onsubmit="submitForm(event, '/users/registration')">
+        <div class="input-group">
+            <input name="name" type="text" placeholder="Имя" class="form-input">
+            <input name="email" type="email" placeholder="Email" class="form-input">
+            <input name="password" type="password" placeholder="Пароль" class="form-input">
+        </div>
+        <button type="submit" class="form-submit">Зарегистрироваться</button>
+    </form>
+
+    <form id="login-form" onsubmit="submitForm(event, '/users/login')">
+        <div class="input-group">
+            <input name="email" type="email" placeholder="Email" class="form-input">
+            <input name="password" type="password" placeholder="Пароль" class="form-input">
+        </div>
+        <button type="submit" class="form-submit">Авторизироваться</button>
+    </form>
+</div>
+</body>
+</html>
