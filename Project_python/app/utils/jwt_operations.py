@@ -26,7 +26,7 @@ class Access:
             decoded_data = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
             return {"valid": True, "expired": False, "data": decoded_data}
         except ExpiredSignatureError:
-            return {"valid": False, "expired": True}
+            return {"valid": True, "expired": True}
         except InvalidTokenError:
             return {"valid": False, "expired": False}
 
@@ -63,9 +63,10 @@ class Refresh:
             if not result:
                 return {"valid": False, "expired": False}
             if result.exp < datetime.now(timezone.utc):  # Если токен истёк
-                await TokenChange.token_delete(db, result)  # Удаляем токен из базы данных
+                await TokenChange.token_delete(db, result.user_email)
                 return {"valid": False, "expired": True, "error": "Token expired"}
-
+        except ExpiredSignatureError:
+            return {"valid": False, "expired": True, "error": "Token expired"}
         except DecodeError:
             return {"valid": False, "expired": False, "error": "Invalid token format"}
         return {"valid": True, "expired": False, "email": result.user_email}
