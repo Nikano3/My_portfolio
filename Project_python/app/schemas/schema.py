@@ -1,21 +1,12 @@
-from pydantic import BaseModel ,EmailStr, field_validator, model_validator
-from pydantic_core import PydanticCustomError
-
+from pydantic import BaseModel, EmailStr, Field
 
 
 class Registration(BaseModel):
-    name: str
+    name: str = Field(min_length=3, description="Имя пользователя")
     email: EmailStr
-    password: str
+    password: str = Field(min_length=6, description="Пароль")
 
-    @field_validator("password")
-    def password_strength(cls, v):
-        if len(v) < 6:
-            raise PydanticCustomError(
-                "password_too_short",  # код ошибки (любой, ты сам выбираешь)
-                "Пароль должен быть не менее 6 символов"  # сообщение пользователю
-            )
-        return v
+
 
 class Login(BaseModel):
     email: EmailStr

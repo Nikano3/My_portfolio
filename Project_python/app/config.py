@@ -1,8 +1,8 @@
-from pydantic_settings import BaseSettings
-import os
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env")
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_SERVER: str
@@ -10,8 +10,7 @@ class Settings(BaseSettings):
     JWT_SECRET: str
     JWT_LIFETIME: int  # лучше int, если это число в секундах
 
-    class Config:
-        env_file = os.path.abspath("F:/Project_python/.env")
+
 
 
 settings = Settings()

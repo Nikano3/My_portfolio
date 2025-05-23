@@ -21,13 +21,22 @@ class UserService:
         stmt = select(Users).where(Users.email == email)
         result = await session.execute(stmt)
         user = result.scalar_one_or_none()
-        verify = verify_password(password, user.password)
-        if not user:
-            raise HTTPException(status_code=404, detail="Пользователь не найден")
-        if not verify:
-            raise HTTPException(status_code=404, detail="Пароль не верный")
+        if user is None:
+            return False
+
+        if not verify_password(password, user.password):
+            raise HTTPException(status_code=401, detail="Неверный пароль")
 
         return True
+
+    @staticmethod
+    async def find_user_name(session: AsyncSession, name: str):
+        find = select(Users).where(Users.name == name)
+        result = await session.execute(find)
+        find = result.scalar_one_or_none()
+        if not find:
+            raise HTTPException(status_code=404, detail="User do not found")
+        return find.id
 
     @staticmethod
     async def find_user(session: AsyncSession, id: int):
@@ -35,8 +44,23 @@ class UserService:
         result = await session.execute(find)
         find = result.scalar_one_or_none()
         if not find:
-            raise HTTPException(status_code=404, detail="Пользователь не найден")
+            raise HTTPException(status_code=404, detail="User do not found")
         return find
+
+    @staticmethod
+    async def delete_user(session: AsyncSession, name: str):
+        # Сначала ищем пользователя
+        stmt = select(Users).where(Users.name == name)
+        result = await session.execute(stmt)
+        user = result.scalar_one_or_none()
+
+        if not user:
+            raise HTTPException(status_code=404, detail="Пользователь не найден")
+
+        # Удаляем пользователя
+        await session.delete(user)
+        await session.commit()
+        return True
 
     @staticmethod
     async def all_users(session: AsyncSession):
@@ -62,9 +86,13 @@ class TokenChange:
         await session.commit()
 
     @staticmethod
-    async def token_delete(session: AsyncSession, value):
-        await session.delete(value)
+    async def token_delete(session: AsyncSession, email: EmailStr):
+        find = select(Refresh).where(Refresh.user_email == email)
+        result = await session.execute(find)
+        token = result.scalar_one_or_none()
+        await session.delete(token)
         await session.commit()
+        return True
 
     @staticmethod
     async def token_check(session: AsyncSession, jti: uuid.UUID):
