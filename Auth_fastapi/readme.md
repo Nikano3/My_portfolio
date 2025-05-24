@@ -64,8 +64,8 @@ Project_python/
 1. Клонируй проект:
 
 ```bash
-git clone https://github.com/yourname/your-repo.git
-cd your-repo
+git clone https://github.com/Nikano3/My_portfolio.git
+cd My_portfolio
 ```
 
 2. Создай виртуалку и активируй:
@@ -89,16 +89,16 @@ POSTGRES_USER=youruser
 POSTGRES_PASSWORD=yourpass
 POSTGRES_DB=yourdb
 JWT_SECRET=your_jwt_secret
-JWT_LIFETIME=30
+JWT_LIFETIME=30 (seconds)
 ```
 
-5. Запусти сервер:
+6. Запусти сервер:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-6. Открой в браузере:
+7. Открой в браузере:
 
 * Документация: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 * HTML-форма: [http://127.0.0.1:8000](http://127.0.0.1:8000)
@@ -107,19 +107,64 @@ uvicorn app.main:app --reload
 
 ## 📌 Эндпоинты
 
-| Метод | URL                   | Защита | Описание                              |
-| ----- | --------------------- | ------ | ------------------------------------- |
-| GET   | `/`                   | ❌      | HTML-форма регистрации                |
-| POST  | `/users/registration` | ❌      | Регистрация                           |
-| POST  | `/users/login`        | ❌      | Вход                                  |
-| POST  | `/refresh`            | ❌      | Обновление access токена              |
-| GET   | `/users`              | ✅      | Все пользователи (нужен access токен) |
-| GET   | `/users/{id}`         | ✅      | Один пользователь (access токен)      |
+### POST /users/registration
 
-> ❌ — не требует токен
-> ✅ — нужен валидный access токен
+- Доступ: открыт
 
----
+- В body (JSON):
+
+          {
+          
+            "name": "Ivan",
+            
+            "email": "ivan@example.com",
+            
+            "password": "secret123"
+            
+          }
+- Ответ:
+  - refresh token
+  - access token
+### POST /users/login
+
+- Доступ: открыт
+
+- В body (JSON):
+
+          {
+          
+            "email": "ivan@example.com",
+          
+            "password": "secret123"
+          
+          }
+
+- Ответ:
+  - refresh token
+  - access token
+### POST /refresh
+
+- Доступ: открыт
+
+- В headers:
+  - token: <refresh_token>
+- Ответ:
+  - access token
+### GET /users
+
+- Доступ: требует access token
+
+- В headers:
+  - token: <access_token>
+- Ответ:
+  - Все зарегистрированные пользователи
+
+### GET /users/{id}
+
+- Доступ: требует access token
+
+- В headers:
+  - token: <access_token>
 
 ## 🧪 Тесты
 
@@ -137,4 +182,4 @@ Pet-проект без лицензии. Используйте как хоти
 
 ## 👤 Автор
 
-Делал для практики. Контакты позже добавлю в GitHub, когда залью.
+- tg - [@Nikano00](https://t.me/Nikano00)
