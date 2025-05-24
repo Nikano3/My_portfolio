@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b3b7d1a9-2b26-43ea-8c7d-ce8039d5cb8d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Auth_fastapi/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/jsons.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/jsons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Project_python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/Project_python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Yandex_webmaster_parce/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/database/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/users/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/database/users/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/database/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/users/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/database/users/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/schemas/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/schemas/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/jwt_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/utils/jwt_operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/password.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/app/utils/password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/js/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/frontend/js/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/frontend/static/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/frontend/templates/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sef.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/data/access_tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/data/access_tokens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/data/refresh_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/data/refresh_token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/test_auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/test_token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Auth_fastapi/tests/test_users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/tg_parce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/tg_parce.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/channels/channels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/channels/channels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tg_parce/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../tg_parce/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2vmINWwQueunoRxwP8MHdntd04q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Python tests for tests.test_users.TestUser.test_get_user_valid.executor": "Run",
+    "Python tests.Python tests in test_auth.py.executor": "Run",
+    "Python tests.Python tests in test_users.py.executor": "Run",
+    "Python.123.executor": "Run",
+    "Python.access_tokens.executor": "Run",
+    "Python.api_requests.executor": "Run",
+    "Python.aw.executor": "Run",
+    "Python.changes.executor": "Debug",
+    "Python.config.executor": "Run",
+    "Python.conftest.executor": "Run",
+    "Python.confuig.executor": "Run",
+    "Python.database.executor": "Run",
+    "Python.db.executor": "Run",
+    "Python.jwt_operations.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.model.executor": "Run",
+    "Python.models.executor": "Run",
+    "Python.modules.executor": "Run",
+    "Python.sef.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "F:/Project_python/hero",
+    "last_opened_file_path": "F:/template",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Project_python\tests" />
+      <recent name="F:\Project_python\tests\data" />
+      <recent name="F:\Project_python\app\utils" />
+      <recent name="F:\Project_python\app\schemas" />
+      <recent name="F:\Project_python\app\database\users" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-348a24fa61fa-5312c7369657-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.23774.444" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3b7d1a9-2b26-43ea-8c7d-ce8039d5cb8d" name="Changes" comment="" />
+      <created>1744743786421</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744743786421</updated>
+    </task>
+    <servers />
+  </component>
+</project>
