@@ -14,5 +14,4 @@ class Settings(BaseSettings):
     JWT_SECRET: str
     JWT_LIFETIME: int
 
-
 settings = Settings()

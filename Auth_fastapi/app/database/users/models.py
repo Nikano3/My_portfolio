@@ -1,10 +1,26 @@
 import uuid
-
-from sqlalchemy import Column, Integer, String, DateTime
 import asyncio
-from app.database.users.db import engine, Base
+import asyncpg
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
+from app.database.users.db import engine, Base
+from app.config import settings
 
+ADMIN_DB_URL = (
+    f"postgresql://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}"
+    f"@{settings.POSTGRES_SERVER}/postgres"
+)
+
+async def create_database_if_not_exists():
+    conn = await asyncpg.connect(ADMIN_DB_URL)
+    dbs = await conn.fetch("SELECT datname FROM pg_database;")
+    db_names = [db['datname'] for db in dbs]
+    if settings.POSTGRES_DB not in db_names:
+        await conn.execute(f'CREATE DATABASE "{settings.POSTGRES_DB}";')
+        print(f"✅ База данных '{settings.POSTGRES_DB}' создана.")
+    else:
+        print(f"ℹ️ База данных '{settings.POSTGRES_DB}' уже существует.")
+    await conn.close()
 
 class Users(Base):
     __tablename__ = "users"
@@ -13,7 +29,6 @@ class Users(Base):
     name = Column(String, nullable=False)
     email = Column(String, nullable=False)
     password = Column(String, nullable=False)
-
 
 class Refresh(Base):
     __tablename__ = "refresh"
@@ -24,16 +39,14 @@ class Refresh(Base):
     iat = Column(DateTime(timezone=True), nullable=False)
     exp = Column(DateTime(timezone=True), nullable=False)
 
-# Функция для создания таблиц
 async def create_tables():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        print("✅ Таблицы созданы.")
 
-
-# Запуск создания таблиц
 async def main():
+    await create_database_if_not_exists()
     await create_tables()
 
-
 if __name__ == "__main__":
-    asyncio.run(main())  # Запускаем асинхронную функцию
+    asyncio.run(main())

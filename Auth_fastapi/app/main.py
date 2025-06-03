@@ -18,7 +18,7 @@ app.mount("/js", StaticFiles(directory="frontend/js"), name="js")
 @app.get("/")
 async def index():
     return HTMLResponse(
-        content=Path("/frontend/templates/registration.html").read_text(encoding="utf-8"))
+        content=Path("frontend/templates/registration.html").read_text(encoding="utf-8"))
 
 
 @app.get('/users')
