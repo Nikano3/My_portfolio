@@ -10,7 +10,6 @@ ADMIN_DB_URL = (
     f"postgresql://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}"
     f"@{settings.POSTGRES_SERVER}/postgres"
 )
-
 async def create_database_if_not_exists():
     conn = await asyncpg.connect(ADMIN_DB_URL)
     dbs = await conn.fetch("SELECT datname FROM pg_database;")
