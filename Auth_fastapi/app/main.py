@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-
+import app.utils.logger
 app = FastAPI()
 users = UserService()
 tokench = TokenChange()
@@ -56,6 +56,7 @@ async def get_user(id: int, db: AsyncSession = Depends(get_db),
         content={"error": "Token is not valid"},
         status_code=status.HTTP_401_UNAUTHORIZED
     )
+
 
 @app.post('/users/registration')
 async def reg(registration: Registration, db: AsyncSession = Depends(get_db)):

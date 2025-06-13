@@ -7,7 +7,7 @@ import uuid
 from fastapi import Header
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import TokenChange
-
+from .logger import logger
 
 class Access:
     @staticmethod
@@ -17,6 +17,7 @@ class Access:
             "email": email,
             "exp": exp
         }
+        logger.info("Access token create successfully")
         return jwt.encode(payload, settings.JWT_SECRET, algorithm="HS256")
 
     @staticmethod
@@ -24,10 +25,13 @@ class Access:
 
         try:
             decoded_data = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
+            logger.info("Access Token is approved")
             return {"valid": True, "expired": False, "data": decoded_data}
         except ExpiredSignatureError:
+            logger.warning("Access Token is expired")
             return {"valid": True, "expired": True}
         except InvalidTokenError:
+            logger.error("Access token is invalid")
             return {"valid": False, "expired": False}
 
 
@@ -49,6 +53,7 @@ class Refresh:
             "jti": str(jti)  # JWT ID
         }
         await TokenChange.token_create(db, user_email=email, jti=jti, iat=iat, exp=exp)
+        logger.info("Refresh token created successfully")
         return jwt.encode(data, settings.JWT_SECRET, algorithm="HS256")
 
     @staticmethod
@@ -64,9 +69,13 @@ class Refresh:
                 return {"valid": False, "expired": False}
             if result.exp < datetime.now(timezone.utc):  # Если токен истёк
                 await TokenChange.token_delete(db, result.user_email)
+                logger.info("Refresh token is expired")
                 return {"valid": False, "expired": True, "error": "Token expired"}
         except ExpiredSignatureError:
+            logger.warning("Refresh token is expired")
             return {"valid": False, "expired": True, "error": "Token expired"}
         except DecodeError:
+            logger.error("Refresh token is invalid")
             return {"valid": False, "expired": False, "error": "Invalid token format"}
+        logger.info("Refresh token is approved")
         return {"valid": True, "expired": False, "email": result.user_email}
