@@ -27,7 +27,7 @@ class UserService:
         result = await session.execute(stmt)
         user = result.scalar_one_or_none()
         if user is None:
-            logger.error("Login_check: User is not found")
+            logger.error("User {email} is not found")
             return False
         if not verify_password(password, user.password):
             raise HTTPException(status_code=401, detail="Неверный пароль")
@@ -41,9 +41,9 @@ class UserService:
         result = await session.execute(find)
         find = result.scalar_one_or_none()
         if not find:
-            logger.error("User name is not find in database")
+            logger.error(f"User {name} is not find in database")
             raise HTTPException(status_code=404, detail="User do not found")
-        logger.info("User name find in database")
+        logger.info(f"User {name} find in database")
         return find.id
 
     @staticmethod
@@ -71,7 +71,7 @@ class UserService:
         # Удаляем пользователя
         await session.delete(user)
         await session.commit()
-        logger.info("User delete successfully database")
+        logger.info(f"User {name} has been removed from the database")
         return True
 
     @staticmethod
@@ -82,7 +82,7 @@ class UserService:
         final = {}
         for user in users:
             final[f"user#{user.id}"] = user
-        logger.info("All  users with database is find ")
+        logger.info("All users in database is find ")
         return final
 
 
@@ -98,7 +98,7 @@ class TokenChange:
             token = Refresh(user_email=user_email, jti=jti, iat=iat, exp=exp)
             session.add(token)
             await session.commit()
-            logger.info("Token add to database")
+            logger.info("Token added to database")
         except Exception as e:
             logger.error(f"Error to add token in database: {e}")
     @staticmethod
@@ -109,7 +109,7 @@ class TokenChange:
             token = result.scalar_one_or_none()
             await session.delete(token)
             await session.commit()
-            logger.info("Token in database delete ")
+            logger.info("Token in database is delete ")
             return True
         except Exception as e:
             logger.error(f"Error to add token in database: {e}")

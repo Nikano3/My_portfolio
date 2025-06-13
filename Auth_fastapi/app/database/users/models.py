@@ -5,7 +5,7 @@ from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from app.database.users.db import engine, Base
 from app.config import settings
-
+from app.utils.logger import logger
 ADMIN_DB_URL = (
     f"postgresql://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}"
     f"@{settings.POSTGRES_SERVER}/postgres"
@@ -16,9 +16,9 @@ async def create_database_if_not_exists():
     db_names = [db['datname'] for db in dbs]
     if settings.POSTGRES_DB not in db_names:
         await conn.execute(f'CREATE DATABASE "{settings.POSTGRES_DB}";')
-        print(f"✅ База данных '{settings.POSTGRES_DB}' создана.")
+        logger.info(f"✅ Database '{settings.POSTGRES_DB}' create.")
     else:
-        print(f"ℹ️ База данных '{settings.POSTGRES_DB}' уже существует.")
+        logger.warning(f"ℹ️ Database '{settings.POSTGRES_DB}' already exists.")
     await conn.close()
 
 class Users(Base):
@@ -41,8 +41,7 @@ class Refresh(Base):
 async def create_tables():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-        print("✅ Таблицы созданы.")
-
+        logger.info("✅ Tables create.")
 async def main():
     await create_database_if_not_exists()
     await create_tables()

@@ -1,190 +1,65 @@
-2025-06-13 16:34:13.175 | INFO     | app.utils.password:hash_password:9 - Password hashed successfully
-2025-06-13 16:34:13.263 | INFO     | sqlalchemy.log:info:159 - select pg_catalog.version()
-2025-06-13 16:34:13.264 | INFO     | sqlalchemy.log:info:159 - [raw sql] ()
-2025-06-13 16:34:13.266 | INFO     | sqlalchemy.log:info:159 - select current_schema()
-2025-06-13 16:34:13.266 | INFO     | sqlalchemy.log:info:159 - [raw sql] ()
-2025-06-13 16:34:13.268 | INFO     | sqlalchemy.log:info:159 - show standard_conforming_strings
-2025-06-13 16:34:13.268 | INFO     | sqlalchemy.log:info:159 - [raw sql] ()
-2025-06-13 16:34:13.269 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.270 | INFO     | sqlalchemy.log:info:159 - INSERT INTO users (name, email, password) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR) RETURNING users.id
-2025-06-13 16:34:13.270 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00023s] ('test_user', 'test@example.com', '$2b$12$OL6ZX5XOV5gPi9vtgxtCW.daYC64hC4ILtpUWEKii9z22FDLqVBau')
-2025-06-13 16:34:13.275 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:13.276 | INFO     | app.database.users.user:register_user:19 - User created in database
-2025-06-13 16:34:13.283 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.284 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.email = $1::VARCHAR
-2025-06-13 16:34:13.284 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00022s] ('test@example.com',)
-2025-06-13 16:34:13.516 | INFO     | app.utils.password:verify_password:18 - Password verify successfully
-2025-06-13 16:34:13.517 | INFO     | app.database.users.user:login_check:34 - login check in database is successfully
-2025-06-13 16:34:13.518 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:13.518 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00025s] ('test@example.com',)
-2025-06-13 16:34:13.520 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:13.520 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.521 | INFO     | sqlalchemy.log:info:159 - INSERT INTO refresh (user_email, jti, iat, exp) VALUES ($1::VARCHAR, $2::UUID, $3::TIMESTAMP WITH TIME ZONE, $4::TIMESTAMP WITH TIME ZONE) RETURNING refresh.id
-2025-06-13 16:34:13.521 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00021s] ('test@example.com', UUID('92770cf0-ad3c-49be-815c-43b870ae3c04'), datetime.datetime(2025, 6, 13, 13, 34, 13, 517109, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 7, 13, 13, 34, 13, 517109, tzinfo=datetime.timezone.utc))
-2025-06-13 16:34:13.523 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:13.524 | INFO     | app.database.users.user:token_create:101 - Token add to database
-2025-06-13 16:34:13.524 | INFO     | app.utils.jwt_operations:create:56 - Refresh token created successfully
-2025-06-13 16:34:13.524 | INFO     | app.utils.jwt_operations:create:20 - Access token create successfully
-2025-06-13 16:34:13.525 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/login "HTTP/1.1 200 OK"
-2025-06-13 16:34:13.528 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.528 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.email = $1::VARCHAR
-2025-06-13 16:34:13.528 | INFO     | sqlalchemy.log:info:159 - [cached since 0.2443s ago] ('test@example.com',)
-2025-06-13 16:34:13.758 | INFO     | app.utils.password:verify_password:18 - Password verify successfully
-2025-06-13 16:34:13.759 | INFO     | sqlalchemy.log:info:159 - ROLLBACK
-2025-06-13 16:34:13.759 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/login "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:13.760 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.760 | INFO     | sqlalchemy.log:info:159 - SELECT refresh.id, refresh.user_email, refresh.jti, refresh.iat, refresh.exp 
-FROM refresh 
-WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:13.761 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00024s] ('test@example.com',)
-2025-06-13 16:34:13.762 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.id = $1::INTEGER
-2025-06-13 16:34:13.762 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00018s] (13,)
-2025-06-13 16:34:13.763 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:13.763 | INFO     | app.database.users.user:token_delete:112 - Token in database delete 
-2025-06-13 16:34:13.764 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.764 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.name = $1::VARCHAR
-2025-06-13 16:34:13.764 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00018s] ('test_user',)
-2025-06-13 16:34:13.765 | INFO     | sqlalchemy.log:info:159 - DELETE FROM users WHERE users.id = $1::INTEGER
-2025-06-13 16:34:13.765 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00018s] (10,)
-2025-06-13 16:34:13.766 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:13.766 | INFO     | app.database.users.user:delete_user:74 - User delete successfully database
-2025-06-13 16:34:13.769 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:13.769 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.email = $1::VARCHAR
-2025-06-13 16:34:13.769 | INFO     | sqlalchemy.log:info:159 - [cached since 0.4852s ago] ('wrong@mail.ru',)
-2025-06-13 16:34:13.770 | ERROR    | app.database.users.user:login_check:30 - Login_check: User is not found
-2025-06-13 16:34:13.770 | INFO     | sqlalchemy.log:info:159 - ROLLBACK
-2025-06-13 16:34:13.770 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/login "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:14.004 | INFO     | app.utils.password:hash_password:9 - Password hashed successfully
-2025-06-13 16:34:14.005 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.005 | INFO     | sqlalchemy.log:info:159 - INSERT INTO users (name, email, password) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR) RETURNING users.id
-2025-06-13 16:34:14.005 | INFO     | sqlalchemy.log:info:159 - [cached since 0.7353s ago] ('test_user', 'test@example.com', '$2b$12$oUpGY4C9Q8A889LqgN9l8ONaYwAitNoOuqFhwai9sgFCHB26F.21m')
-2025-06-13 16:34:14.006 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.007 | INFO     | app.database.users.user:register_user:19 - User created in database
-2025-06-13 16:34:14.007 | INFO     | app.utils.jwt_operations:create:20 - Access token create successfully
-2025-06-13 16:34:14.007 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.007 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:14.007 | INFO     | sqlalchemy.log:info:159 - [cached since 0.4898s ago] ('test@example.com',)
-2025-06-13 16:34:14.008 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.008 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.008 | INFO     | sqlalchemy.log:info:159 - INSERT INTO refresh (user_email, jti, iat, exp) VALUES ($1::VARCHAR, $2::UUID, $3::TIMESTAMP WITH TIME ZONE, $4::TIMESTAMP WITH TIME ZONE) RETURNING refresh.id
-2025-06-13 16:34:14.009 | INFO     | sqlalchemy.log:info:159 - [cached since 0.4876s ago] ('test@example.com', UUID('ef47801a-a837-4f56-a7fc-832a68121d65'), datetime.datetime(2025, 6, 13, 13, 34, 14, 7243, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 7, 13, 13, 34, 14, 7243, tzinfo=datetime.timezone.utc))
-2025-06-13 16:34:14.009 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.009 | INFO     | app.database.users.user:token_create:101 - Token add to database
-2025-06-13 16:34:14.010 | INFO     | app.utils.jwt_operations:create:56 - Refresh token created successfully
-2025-06-13 16:34:14.010 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/registration "HTTP/1.1 200 OK"
-2025-06-13 16:34:14.010 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.010 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.name = $1::VARCHAR
-2025-06-13 16:34:14.011 | INFO     | sqlalchemy.log:info:159 - [cached since 0.2465s ago] ('test_user',)
-2025-06-13 16:34:14.011 | INFO     | sqlalchemy.log:info:159 - DELETE FROM users WHERE users.id = $1::INTEGER
-2025-06-13 16:34:14.011 | INFO     | sqlalchemy.log:info:159 - [cached since 0.2461s ago] (11,)
-2025-06-13 16:34:14.012 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.012 | INFO     | app.database.users.user:delete_user:74 - User delete successfully database
-2025-06-13 16:34:14.012 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.012 | INFO     | sqlalchemy.log:info:159 - SELECT refresh.id, refresh.user_email, refresh.jti, refresh.iat, refresh.exp 
-FROM refresh 
-WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:14.013 | INFO     | sqlalchemy.log:info:159 - [cached since 0.2523s ago] ('test@example.com',)
-2025-06-13 16:34:14.013 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.id = $1::INTEGER
-2025-06-13 16:34:14.013 | INFO     | sqlalchemy.log:info:159 - [cached since 0.2513s ago] (14,)
-2025-06-13 16:34:14.014 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.014 | INFO     | app.database.users.user:token_delete:112 - Token in database delete 
-2025-06-13 16:34:14.016 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/registration "HTTP/1.1 422 Unprocessable Entity"
-2025-06-13 16:34:14.018 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/registration "HTTP/1.1 422 Unprocessable Entity"
-2025-06-13 16:34:14.022 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/users/registration "HTTP/1.1 422 Unprocessable Entity"
-2025-06-13 16:34:14.024 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.025 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:14.025 | INFO     | sqlalchemy.log:info:159 - [cached since 0.5072s ago] ('testik123@mail.ru',)
-2025-06-13 16:34:14.026 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.026 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.026 | INFO     | sqlalchemy.log:info:159 - INSERT INTO refresh (user_email, jti, iat, exp) VALUES ($1::VARCHAR, $2::UUID, $3::TIMESTAMP WITH TIME ZONE, $4::TIMESTAMP WITH TIME ZONE) RETURNING refresh.id
-2025-06-13 16:34:14.026 | INFO     | sqlalchemy.log:info:159 - [cached since 0.5054s ago] ('testik123@mail.ru', UUID('1cb3eeeb-d442-4c2b-8645-4a47ecbd9b16'), datetime.datetime(2025, 6, 13, 13, 34, 14, 24469, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 7, 13, 13, 34, 14, 24469, tzinfo=datetime.timezone.utc))
-2025-06-13 16:34:14.027 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.027 | INFO     | app.database.users.user:token_create:101 - Token add to database
-2025-06-13 16:34:14.027 | INFO     | app.utils.jwt_operations:create:56 - Refresh token created successfully
-2025-06-13 16:34:14.028 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.029 | INFO     | sqlalchemy.log:info:159 - SELECT refresh.id, refresh.user_email, refresh.jti, refresh.iat, refresh.exp 
-FROM refresh 
-WHERE refresh.jti = $1::UUID
-2025-06-13 16:34:14.029 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00017s] (UUID('1cb3eeeb-d442-4c2b-8645-4a47ecbd9b16'),)
-2025-06-13 16:34:14.029 | INFO     | app.database.users.user:token_check:126 - Token successfully checked
-2025-06-13 16:34:14.030 | INFO     | app.utils.jwt_operations:check:80 - Refresh token is approved
-2025-06-13 16:34:14.030 | INFO     | app.utils.jwt_operations:create:20 - Access token create successfully
-2025-06-13 16:34:14.030 | INFO     | sqlalchemy.log:info:159 - ROLLBACK
-2025-06-13 16:34:14.030 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/refresh "HTTP/1.1 200 OK"
-2025-06-13 16:34:14.032 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.033 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:14.033 | INFO     | sqlalchemy.log:info:159 - [cached since 0.5152s ago] ('testik123@mail.ru',)
-2025-06-13 16:34:14.034 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.034 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.035 | INFO     | sqlalchemy.log:info:159 - INSERT INTO refresh (user_email, jti, iat, exp) VALUES ($1::VARCHAR, $2::UUID, $3::TIMESTAMP WITH TIME ZONE, $4::TIMESTAMP WITH TIME ZONE) RETURNING refresh.id
-2025-06-13 16:34:14.035 | INFO     | sqlalchemy.log:info:159 - [cached since 0.5137s ago] ('testik123@mail.ru', UUID('7074959a-fdfd-4e67-8604-354f089ac19f'), datetime.datetime(2025, 6, 13, 13, 34, 14, 32573, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 6, 12, 13, 34, 14, 32573, tzinfo=datetime.timezone.utc))
-2025-06-13 16:34:14.035 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.036 | INFO     | app.database.users.user:token_create:101 - Token add to database
-2025-06-13 16:34:14.036 | WARNING  | app.utils.jwt_operations:check:75 - Refresh token is expired
-2025-06-13 16:34:14.037 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/refresh "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:14.037 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.037 | INFO     | sqlalchemy.log:info:159 - SELECT refresh.id, refresh.user_email, refresh.jti, refresh.iat, refresh.exp 
-FROM refresh 
-WHERE refresh.user_email = $1::VARCHAR
-2025-06-13 16:34:14.037 | INFO     | sqlalchemy.log:info:159 - [cached since 0.277s ago] ('testik123@mail.ru',)
-2025-06-13 16:34:14.038 | INFO     | sqlalchemy.log:info:159 - DELETE FROM refresh WHERE refresh.id = $1::INTEGER
-2025-06-13 16:34:14.038 | INFO     | sqlalchemy.log:info:159 - [cached since 0.2762s ago] (16,)
-2025-06-13 16:34:14.039 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.039 | INFO     | app.database.users.user:token_delete:112 - Token in database delete 
-2025-06-13 16:34:14.041 | ERROR    | app.utils.jwt_operations:check:78 - Refresh token is invalid
-2025-06-13 16:34:14.041 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: POST http://test/refresh "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:14.044 | INFO     | app.utils.jwt_operations:check:28 - Access Token is approved
-2025-06-13 16:34:14.044 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.045 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users
-2025-06-13 16:34:14.045 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00019s] ()
-2025-06-13 16:34:14.046 | INFO     | app.database.users.user:all_users:85 - All  users with database is find 
-2025-06-13 16:34:14.046 | INFO     | sqlalchemy.log:info:159 - ROLLBACK
-2025-06-13 16:34:14.046 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: GET http://test/users "HTTP/1.1 200 OK"
-2025-06-13 16:34:14.048 | ERROR    | app.utils.jwt_operations:check:34 - Access token is invalid
-2025-06-13 16:34:14.049 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: GET http://test/users "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:14.050 | WARNING  | app.utils.jwt_operations:check:31 - Access Token is expired
-2025-06-13 16:34:14.050 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: GET http://test/users "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:14.281 | INFO     | app.utils.password:hash_password:9 - Password hashed successfully
-2025-06-13 16:34:14.282 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.282 | INFO     | sqlalchemy.log:info:159 - INSERT INTO users (name, email, password) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR) RETURNING users.id
-2025-06-13 16:34:14.282 | INFO     | sqlalchemy.log:info:159 - [cached since 1.012s ago] ('test_user', 'test@example.com', '$2b$12$gs4ypQ0h7FVCE5fP2pATQuuz6/2ZxqbsNKndEKAkRWBVMMNXbqy3y')
-2025-06-13 16:34:14.283 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.284 | INFO     | app.database.users.user:register_user:19 - User created in database
-2025-06-13 16:34:14.284 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.284 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.name = $1::VARCHAR
-2025-06-13 16:34:14.284 | INFO     | sqlalchemy.log:info:159 - [cached since 0.5202s ago] ('test_user',)
-2025-06-13 16:34:14.285 | INFO     | app.database.users.user:find_user_name:46 - User name find in database
-2025-06-13 16:34:14.285 | INFO     | app.utils.jwt_operations:check:28 - Access Token is approved
-2025-06-13 16:34:14.346 | INFO     | sqlalchemy.log:info:159 - BEGIN (implicit)
-2025-06-13 16:34:14.347 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.id = $1::INTEGER
-2025-06-13 16:34:14.347 | INFO     | sqlalchemy.log:info:159 - [generated in 0.00019s] (12,)
-2025-06-13 16:34:14.348 | INFO     | app.database.users.user:find_user:57 - User find in database
-2025-06-13 16:34:14.349 | INFO     | sqlalchemy.log:info:159 - ROLLBACK
-2025-06-13 16:34:14.349 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: GET http://test/users/12 "HTTP/1.1 200 OK"
-2025-06-13 16:34:14.349 | INFO     | sqlalchemy.log:info:159 - SELECT users.id, users.name, users.email, users.password 
-FROM users 
-WHERE users.name = $1::VARCHAR
-2025-06-13 16:34:14.349 | INFO     | sqlalchemy.log:info:159 - [cached since 0.5854s ago] ('test_user',)
-2025-06-13 16:34:14.350 | INFO     | sqlalchemy.log:info:159 - DELETE FROM users WHERE users.id = $1::INTEGER
-2025-06-13 16:34:14.350 | INFO     | sqlalchemy.log:info:159 - [cached since 0.585s ago] (12,)
-2025-06-13 16:34:14.350 | INFO     | sqlalchemy.log:info:159 - COMMIT
-2025-06-13 16:34:14.351 | INFO     | app.database.users.user:delete_user:74 - User delete successfully database
-2025-06-13 16:34:14.353 | ERROR    | app.utils.jwt_operations:check:34 - Access token is invalid
-2025-06-13 16:34:14.354 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: GET http://test/users/1 "HTTP/1.1 401 Unauthorized"
-2025-06-13 16:34:14.356 | WARNING  | app.utils.jwt_operations:check:31 - Access Token is expired
-2025-06-13 16:34:14.356 | INFO     | httpx._client:_send_single_request:1740 - HTTP Request: GET http://test/users/1 "HTTP/1.1 401 Unauthorized"
+2025-06-13 17:20:01.431 | INFO     | app.utils.password:hash_password:9 - Password hashed successfully
+2025-06-13 17:20:01.509 | INFO     | app.database.users.user:register_user:19 - User created in database
+2025-06-13 17:20:01.515 | INFO     | app.main:login:93 - Login attempt: email=test@example.com
+2025-06-13 17:20:01.750 | INFO     | app.utils.password:verify_password:18 - Password verify successfully
+2025-06-13 17:20:01.750 | INFO     | app.database.users.user:login_check:34 - login check in database is successfully
+2025-06-13 17:20:01.750 | INFO     | app.main:login:96 - User logged in successfully: email=test@example.com
+2025-06-13 17:20:01.755 | INFO     | app.database.users.user:token_create:101 - Token add to database
+2025-06-13 17:20:01.755 | INFO     | app.utils.jwt_operations:create:56 - Refresh token created successfully
+2025-06-13 17:20:01.755 | INFO     | app.utils.jwt_operations:create:20 - Access token create successfully
+2025-06-13 17:20:01.758 | INFO     | app.main:login:93 - Login attempt: email=test@example.com
+2025-06-13 17:20:01.988 | INFO     | app.utils.password:verify_password:18 - Password verify successfully
+2025-06-13 17:20:01.988 | ERROR    | app.main:login:104 - Login error for email=test@example.com: Неверный пароль
+2025-06-13 17:20:01.992 | INFO     | app.database.users.user:token_delete:112 - Token in database delete 
+2025-06-13 17:20:01.995 | INFO     | app.database.users.user:delete_user:74 - User delete successfully database
+2025-06-13 17:20:01.998 | INFO     | app.main:login:93 - Login attempt: email=wrong@mail.ru
+2025-06-13 17:20:01.999 | ERROR    | app.database.users.user:login_check:30 - Login_check: User is not found
+2025-06-13 17:20:01.999 | WARNING  | app.main:login:102 - Failed login attempt: email=wrong@mail.ru
+2025-06-13 17:20:02.003 | INFO     | app.main:reg:76 - Registration attempt: email=test@example.com
+2025-06-13 17:20:02.232 | INFO     | app.utils.password:hash_password:9 - Password hashed successfully
+2025-06-13 17:20:02.234 | INFO     | app.database.users.user:register_user:19 - User created in database
+2025-06-13 17:20:02.234 | INFO     | app.utils.jwt_operations:create:20 - Access token create successfully
+2025-06-13 17:20:02.236 | INFO     | app.database.users.user:token_create:101 - Token add to database
+2025-06-13 17:20:02.236 | INFO     | app.utils.jwt_operations:create:56 - Refresh token created successfully
+2025-06-13 17:20:02.236 | INFO     | app.main:reg:81 - User registered successfully: email=test@example.com
+2025-06-13 17:20:02.238 | INFO     | app.database.users.user:delete_user:74 - User delete successfully database
+2025-06-13 17:20:02.240 | INFO     | app.database.users.user:token_delete:112 - Token in database delete 
+2025-06-13 17:20:02.250 | INFO     | app.database.users.user:token_create:101 - Token add to database
+2025-06-13 17:20:02.250 | INFO     | app.utils.jwt_operations:create:56 - Refresh token created successfully
+2025-06-13 17:20:02.250 | INFO     | app.main:access_refresh:112 - Token refresh attempt
+2025-06-13 17:20:02.252 | INFO     | app.database.users.user:token_check:126 - Token successfully checked
+2025-06-13 17:20:02.252 | INFO     | app.utils.jwt_operations:check:80 - Refresh token is approved
+2025-06-13 17:20:02.252 | INFO     | app.utils.jwt_operations:create:20 - Access token create successfully
+2025-06-13 17:20:02.252 | INFO     | app.main:access_refresh:123 - Access token refreshed for email=testik123@mail.ru
+2025-06-13 17:20:02.256 | INFO     | app.database.users.user:token_create:101 - Token add to database
+2025-06-13 17:20:02.257 | INFO     | app.main:access_refresh:112 - Token refresh attempt
+2025-06-13 17:20:02.257 | WARNING  | app.utils.jwt_operations:check:75 - Refresh token is expired
+2025-06-13 17:20:02.257 | WARNING  | app.main:access_refresh:115 - Refresh token expired
+2025-06-13 17:20:02.259 | INFO     | app.database.users.user:token_delete:112 - Token in database delete 
+2025-06-13 17:20:02.261 | INFO     | app.main:access_refresh:112 - Token refresh attempt
+2025-06-13 17:20:02.261 | ERROR    | app.utils.jwt_operations:check:78 - Refresh token is invalid
+2025-06-13 17:20:02.261 | WARNING  | app.main:access_refresh:119 - Refresh token not valid
+2025-06-13 17:20:02.263 | INFO     | app.utils.jwt_operations:check:28 - Access Token is approved
+2025-06-13 17:20:02.264 | INFO     | app.main:get_users:28 - Request to get all users
+2025-06-13 17:20:02.265 | INFO     | app.database.users.user:all_users:85 - All  users with database is find 
+2025-06-13 17:20:02.265 | INFO     | app.main:get_users:31 - Returning all users data. Count: 0
+2025-06-13 17:20:02.267 | ERROR    | app.utils.jwt_operations:check:34 - Access token is invalid
+2025-06-13 17:20:02.267 | INFO     | app.main:get_users:28 - Request to get all users
+2025-06-13 17:20:02.267 | WARNING  | app.main:get_users:41 - Invalid access token when getting all users
+2025-06-13 17:20:02.269 | WARNING  | app.utils.jwt_operations:check:31 - Access Token is expired
+2025-06-13 17:20:02.269 | INFO     | app.main:get_users:28 - Request to get all users
+2025-06-13 17:20:02.269 | WARNING  | app.main:get_users:35 - Access token expired when getting all users
+2025-06-13 17:20:02.503 | INFO     | app.utils.password:hash_password:9 - Password hashed successfully
+2025-06-13 17:20:02.505 | INFO     | app.database.users.user:register_user:19 - User created in database
+2025-06-13 17:20:02.506 | INFO     | app.database.users.user:find_user_name:46 - User name find in database
+2025-06-13 17:20:02.506 | INFO     | app.utils.jwt_operations:check:28 - Access Token is approved
+2025-06-13 17:20:02.506 | INFO     | app.main:get_user:51 - Request to get user by id: 18
+2025-06-13 17:20:02.574 | INFO     | app.database.users.user:find_user:57 - User find in database
+2025-06-13 17:20:02.574 | INFO     | app.main:get_user:55 - User found: id=18
+2025-06-13 17:20:02.576 | INFO     | app.database.users.user:delete_user:74 - User delete successfully database
+2025-06-13 17:20:02.579 | ERROR    | app.utils.jwt_operations:check:34 - Access token is invalid
+2025-06-13 17:20:02.579 | INFO     | app.main:get_user:51 - Request to get user by id: 1
+2025-06-13 17:20:02.579 | WARNING  | app.main:get_user:67 - Invalid access token when getting user id=1
+2025-06-13 17:20:02.581 | WARNING  | app.utils.jwt_operations:check:31 - Access Token is expired
+2025-06-13 17:20:02.581 | INFO     | app.main:get_user:51 - Request to get user by id: 1
+2025-06-13 17:20:02.581 | WARNING  | app.main:get_user:61 - Access token expired when getting user id=1

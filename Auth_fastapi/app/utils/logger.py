@@ -19,7 +19,7 @@ logger.add(
     rotation= "1 month",
     retention = "6 month",
 )
-
+'''
 
 class InterceptHandler(logging.Handler):
     def emit(self, record):
@@ -35,4 +35,4 @@ logging.basicConfig(handlers=[InterceptHandler()], level=logging.INFO, force=Tru
 
 # Подменяем хендлеры у популярных логгеров fastapi и uvicorn
 for logger_name in ("uvicorn", "uvicorn.error", "uvicorn.access", "fastapi"):
-    logging.getLogger(logger_name).handlers = [InterceptHandler()]
+    logging.getLogger(logger_name).handlers = [InterceptHandler()]'''
