@@ -12,6 +12,7 @@
 * Обновление access токена через refresh
 * Хэширование паролей
 * Асинхронная работа с PostgreSQL
+* Логгирование с помощью Logger
 * Тесты через pytest
 
 ---
@@ -26,7 +27,7 @@
 * Uvicorn
 * Pytest
 * hashlib
-
+* Logger
 ---
 
 ## 📁 Структура
@@ -45,11 +46,14 @@ Project_python/
 │   ├── utils/
 │   │   ├── jwt_operations.py  # токены
 │   │   └── password.py        # хэши
+            logger.py          # Логгер
 │   ├── config.py
 │   └── main.py
 │
-├── frontend/                  # HTML/JS
+├── frontend/                  # HTML/JS/css
 ├── tests/                     # pytest
+├──logs/
+│   └── app.log  
 ├── .env
 ├── pytest.ini
 ├── requirements.txt

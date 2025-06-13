@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, Header, HTTPException, status
-from app.schemas.schema import Registration, Login
+from app.schemas.Auth import Registration, Login
 from app.database import UserService, get_db, TokenChange
 from app.utils.jwt_operations import Access, Refresh
 from sqlalchemy.ext.asyncio import AsyncSession
