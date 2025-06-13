@@ -42,7 +42,7 @@ Project_python/
 │   │       ├── models.py      # модели
 │   │       └── user.py        # логика по юзерам
 │   ├── schemas/
-│   │   └── schema.py          # Pydantic-схемы
+│   │   └── Auth.py          # Pydantic-схемы
 │   ├── utils/
 │   │   ├── jwt_operations.py  # токены
 │   │   └── password.py        # хэши

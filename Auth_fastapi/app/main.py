@@ -6,14 +6,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
+import asyncio
 from app.utils.logger import logger
+from database.users.models import main
 app = FastAPI()
 users = UserService()
 tokench = TokenChange()
 
 app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 app.mount("/js", StaticFiles(directory="frontend/js"), name="js")
-
+#Создание базы данных с таблицами
+asyncio.run(main())
 
 @app.get("/")
 async def index():
