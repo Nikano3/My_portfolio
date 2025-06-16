@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Depends, Header, HTTPException, status
 from app.schemas.Auth import Registration, Login
 from app.database import UserService, get_db, TokenChange
@@ -6,17 +8,26 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-import asyncio
 from app.utils.logger import logger
-from database.users.models import main
-app = FastAPI()
+from app.database.users.models import create_database_if_not_exists, create_tables
+
+
+@asynccontextmanager
+async def lifespan(app:FastAPI):
+    await create_database_if_not_exists()
+    await create_tables()
+    logger.info("✅ DB init done in lifespan event")
+    yield
+
+app = FastAPI(lifespan=lifespan)
 users = UserService()
 tokench = TokenChange()
 
+
+
+
 app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 app.mount("/js", StaticFiles(directory="frontend/js"), name="js")
-#Создание базы данных с таблицами
-asyncio.run(main())
 
 @app.get("/")
 async def index():
