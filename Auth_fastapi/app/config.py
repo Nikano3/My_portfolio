@@ -15,3 +15,4 @@ class Settings(BaseSettings):
     JWT_LIFETIME: int
 
 settings = Settings()
+#awdadawdawd
