@@ -70,7 +70,7 @@ async def test_registration(client, session):
 @pytest.mark.order(5)
 async def test__wrong_email_registration(client, session):
     response = await client.post("/users/registration", json={"name": "Jack", "email": "jack@m", "password": "11"})
-    assert response.status_code == 422  # assert проверки статус кода ответа
+    assert response.status_code == 422 # assert проверки статус кода ответа
     assert response.json()["detail"][0]["loc"] == ["body", "email"]
 
 
