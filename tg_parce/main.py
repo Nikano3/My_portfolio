@@ -92,7 +92,6 @@ class Parse_tg:
         except Exception as e:
             logger.error(f"Ошибка при авторизации: {e}")
             return
-
     async def for_accept(self):
         messages_file = 'finally_txt/messages.txt'
         json_file = 'data_for_login/data.json'
